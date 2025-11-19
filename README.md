@@ -70,7 +70,6 @@ Now, when users connect via SSH, they will see the custom MOTD banner before the
 - **Local Login**: The MOTD will display automatically upon terminal login.
 - **SSH Login**: After configuration, it shows as the SSH banner.
 - **Regenerate MOTD**: Run `run-parts /etc/update-motd.d/` as root to refresh the content.
-- **Customization**: Edit `/etc/update-motd.d/00-header` to modify the output. Colors and sections can be adjusted using ANSI escape codes.
 
 Example output:
 ```
