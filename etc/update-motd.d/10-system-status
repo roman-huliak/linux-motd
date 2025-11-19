@@ -1,0 +1,25 @@
+#!/bin/bash
+
+HOST=$(hostname)
+UP=$(uptime -p)
+LOAD=$(cut -d " " -f1-3 /proc/loadavg)
+CPU=$(grep -m1 "model name" /proc/cpuinfo | cut -d: -f2-)
+MEM=$(free -h | awk '/Mem/{print $3 "/" $2}')
+DISK=$(df -h / | awk 'NR==2{print $3 "/" $2 " used (" $5 ")"}')
+NET=$(ip route get 8.8.8.8 2>/dev/null | awk '/src/ {print $7}')
+FAILED=$(journalctl -u ssh --since "24 hours ago" 2>/dev/null | grep -c "Failed password")
+UPDATES=$(apt list --upgradeable 2>/dev/null | grep -c upgradable)
+cat <<EOF
+------------------------------------------------------------
+ Host: $HOST
+ Uptime: $UP
+ Load: $LOAD
+ CPU:  $CPU
+ Mem:  $MEM
+ Disk: $DISK
+ Network: $NET
+ Security:
+    Failed logins (24h): $FAILED
+    Pending updates:     $UPDATES
+------------------------------------------------------------
+EOF
