@@ -1,6 +1,8 @@
 # Linux MOTD
 
-A customizable Message of the Day (MOTD) for Linux systems. This project provides dynamic system information displayed upon login, including system stats, uptime, and more. It enhances the terminal experience with colorful, informative banners.
+A customizable Message of the Day (MOTD) for Linux systems.  
+Displays real-time system information on login — such as load average, memory usage, disk space, and uptime — using the standard `update-motd.d` mechanism.  
+Designed to be fast, predictable, and compatible with production environments.
 
 ## Features
 
