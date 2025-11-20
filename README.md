@@ -15,7 +15,27 @@ A customizable Message of the Day (MOTD) for Linux systems. This project provide
 - A Debian-based or compatible Linux distribution (e.g., Ubuntu, Debian).
 - Basic tools like `cp`, `nano`, and `systemctl` installed.
 
-## Installation
+## Automatic Installation
+
+Run the following commands **as root** to install the MOTD files.
+```
+curl -s https://raw.githubusercontent.com/roman-huliak/linux-motd/master/install.sh | bash
+```
+
+Example output:
+```
+>>> Downloading repository...
+>>> Installing MOTD script...
+>>> Clearing /etc/motd...
+>>> Enabling SSH banner...
+>>> Restarting SSH daemon...
+>>> Cleaning temporary files...
+>>> Installation complete.
+Log out and back in to see the new MOTD.
+```
+
+
+## Manual Installation
 
 Run the following commands **as root** to install the MOTD files. This will copy the necessary files to their standard locations, overwriting any existing files if present.
 
