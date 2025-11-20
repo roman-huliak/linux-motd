@@ -4,7 +4,7 @@ A customizable Message of the Day (MOTD) for Linux systems. This project provide
 
 ## Features
 
-- **Dynamic Content**: Displays real-time system information like load average, memory usage, and disk space.
+- **Dynamic Content**: Displays real-time system information such as load average, memory usage, and disk space.
 - **SSH Integration**: Configurable to show MOTD via SSH banner.
 - **Lightweight**: No heavy dependencies; uses standard Linux tools.
 - **Customizable**: Easily modify scripts and templates.
@@ -44,7 +44,7 @@ Log out and back in to see the new MOTD.
 
 ## Manual Installation
 
-Run the following commands **as root** to install the MOTD files. This will copy the necessary files to their standard locations, overwriting any existing files if present.
+Run the following commands **as root** to install the MOTD files. This will copy the necessary files to their standard locations, overwriting any existing files if they exist.
 
 1. Clone the repository:
    ```
