@@ -110,6 +110,7 @@ All activities are monitored and logged.
 Unauthorized access will be prosecuted.
 ------------------------------------------------------------
  Host: s1-prod-example
+ System: Ubuntu 24.04.3 LTS x86_64
  Uptime: up 5 days, 23 hours, 33 minutes
  Load: 0.75 0.68 0.65
  CPU:   13th Gen Intel(R) Core(TM) i5-13500
@@ -120,7 +121,7 @@ Unauthorized access will be prosecuted.
     Failed logins (24h): 94
     Pending updates:     0
 ------------------------------------------------------------
-Linux s1-prod-example 6.1.0-41-amd64 #1 SMP PREEMPT_DYNAMIC Debian 6.1.158-1 (2025-11-09) x86_64
+*** System restart required ***
 Last login: Wed Nov 19 23:15:39 2025 from 200.80.100.5
 ```
 
