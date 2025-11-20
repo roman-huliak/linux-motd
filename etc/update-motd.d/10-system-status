@@ -9,9 +9,17 @@ DISK=$(df -h / | awk 'NR==2{print $3 "/" $2 " used (" $5 ")"}')
 NET=$(ip route get 8.8.8.8 2>/dev/null | awk '/src/ {print $7}')
 FAILED=$(journalctl -u ssh --since "24 hours ago" 2>/dev/null | grep -c "Failed password")
 UPDATES=$(apt list --upgradeable 2>/dev/null | grep -c upgradable)
+[ -r /etc/lsb-release ] && . /etc/lsb-release
+
+if [ -z "$DISTRIB_DESCRIPTION" ] && [ -x /usr/bin/lsb_release ]; then
+  # Fall back to using the very slow lsb_release utility
+  DISTRIB_DESCRIPTION=$(lsb_release -s -d)
+fi
+
 cat <<EOF
 ------------------------------------------------------------
- Host: $HOST
+ Host:   $HOST
+ System: $DISTRIB_DESCRIPTION $(uname -m)
  Uptime: $UP
  Load: $LOAD
  CPU:  $CPU
@@ -23,3 +31,7 @@ cat <<EOF
     Pending updates:     $UPDATES
 ------------------------------------------------------------
 EOF
+
+if [ -x /usr/lib/update-notifier/update-motd-reboot-required ]; then
+    exec /usr/lib/update-notifier/update-motd-reboot-required
+fi
