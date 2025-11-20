@@ -12,8 +12,15 @@ A customizable Message of the Day (MOTD) for Linux systems. This project provide
 ## Prerequisites
 
 - Root access (all commands must be run as root).
-- A Debian-based or compatible Linux distribution (e.g., Ubuntu, Debian).
-- Basic tools like `cp`, `nano`, and `systemctl` installed.
+- A Debian-based Linux distribution (e.g., Ubuntu 22.04+ or Debian 12+).
+- Basic tools like `git`, `cp`, `nano`, `truncate`, and `systemctl` installed (standard on most distros).
+
+## Compatibility
+
+- Tested on:
+  - Ubuntu 22.04 LTS and 24.04 LTS
+  - Debian 11 (Bullseye) and 12 (Bookworm)
+- Optimized for Debian-based distributions. For RPM-based (e.g., Fedora, CentOS), minor adjustments may be needed (e.g., use `service sshd restart` instead of `systemctl`).
 
 ## Automatic Installation
 
@@ -61,6 +68,8 @@ Run the following commands **as root** to install the MOTD files. This will copy
    ```
    run-parts /etc/update-motd.d/
    ```
+
+5. Test the installation by logging out and back in (local) or connecting via SSH (after configuration). You should see the custom MOTD banner.
 
 ## Configure SSH to Display It
 
@@ -118,6 +127,8 @@ Last login: Wed Nov 19 23:15:39 2025 from 200.80.100.5
 
 - **No Output**: Ensure `run-parts /etc/update-motd.d/` runs without errors. Check permissions on `/etc/update-motd.d/`.
 - **SSH Not Showing Banner**: Verify `Banner` is correctly set in `/etc/ssh/sshd_config` and SSH is restarted.
+- **Permission Denied on Copy**: Ensure you're running as root. If `/etc/update-motd.d/` doesn't exist, create it with `mkdir -p /etc/update-motd.d/`.
+- **MOTD Not Updating on Debian**: Run `chmod +x /etc/update-motd.d/00-header` to make the script executable.
 
 ## Contributing
 
