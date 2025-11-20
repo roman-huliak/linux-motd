@@ -31,7 +31,7 @@ echo ">>> Clearing /etc/motd..."
 
 echo ">>> Enabling SSH banner..."
 
-cp -r "$SRC_DIR/banner" /etc/issue.net
+cp -r "$SRC_DIR/etc/issue.net" /etc/issue.net
 
 # idempotent edit of sshd_config
 if ! grep -q "^Banner /etc/issue.net" /etc/ssh/sshd_config 2>/dev/null; then
